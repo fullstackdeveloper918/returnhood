@@ -1,0 +1,33 @@
+# fly.toml app configuration file generated for return-hood on 2024-07-22T10:23:36+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'return-hood'
+primary_region = 'lhr'
+
+[build]
+
+[env]
+  PORT = "8081"
+  HOST = "https://return-hood.fly.dev"
+  SHOPIFY_API_KEY="345fcfded4c3f6b3f8d8ab521cf7d9a4"
+  SCOPES="read_discounts,read_orders,read_price_rules,read_products,read_themes,write_discounts,write_orders,write_price_rules,write_products,write_themes"
+  DATABASE_URL = "mysql://returnhood:returnhood@123@my-mysql-lively-mountain-1673.fly.dev:3306/returnhood"
+
+[http_service]
+  internal_port = 8081
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = false
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[mounts]
+  source="mysqldata"
+  destination="/data"

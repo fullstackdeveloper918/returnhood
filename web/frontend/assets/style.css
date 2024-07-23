@@ -1,0 +1,28 @@
+h2.Polaris-Text--root.Polaris-Text--headingMd {
+    font-size: 20px;
+  }
+  .Polaris-Card__Section h2.Polaris-Text--root {
+    font-size: 32px !important;
+    text-align: center;
+    width: 100%;
+    margin: 20px 0px 30px;
+  }
+  .Polaris-Card__Section .Polaris-Stack {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .Polaris-Card__Section .Polaris-Stack__Item.Polaris-Stack__Item--fill p {
+    text-align: center;
+    font-size: 16px;
+    line-height: 26px;
+    color: #4A4A4A;
+  }
+  .Polaris-Card__Section
+    .Polaris-Stack__Item.Polaris-Stack__Item--fill
+    p
+    a.Polaris-Link {
+    color: #008988;
+  }
+  .Polaris-Layout > div:last-child.Polaris-Layout__Section {
+    display: none;
+  }

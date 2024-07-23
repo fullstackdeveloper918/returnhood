@@ -1,0 +1,129 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <style>
+   button.shopify-payment-button.save-letter {
+    padding: 10px;
+    width: 343px;
+    height: 46px;
+    border: none;
+    background: green;
+    font-size: 17px;
+    color: white;
+     cursor:pointer;
+}
+   /* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    max-width: 260px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 12px 10px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    font-size: 12px;
+    line-height: 17px;
+    bottom: 56px;
+    right: 0;
+    border-radius: 0px;
+    margin: 0 auto;
+    border-radius: 7px;
+}
+span.tooltip_text {
+    position: relative;
+}
+
+span.tooltip_text::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 17px;
+    display: block;
+    left: 50%;
+    background: black;
+    margin: 0 auto;
+    transform: translateX(10%) rotate(45deg);
+    right: 0;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+ </style>
+{% if product.metafields.custom.latestProduct and customer %}
+<form id="saveLetterForm" method="post">
+    <input type="hidden" name="product_variant_id" value="{{ product.selected_or_first_available_variant.id }}" /> 
+    <input type="hidden" name="product_url" value="{{ product.url }}" /> 
+    <input type="hidden" name="product_name" value="{{ product.title }}" /> 
+    <input type="hidden" name="product_price" value="{{ product.price | money_with_currency }}" /> 
+    <input type="hidden" name="product_status" value="{% if product.available %}Active{% else %}Draft{% endif %}" /> 
+    <input type="hidden" name="product_quantity" value="{{ product.selected_or_first_available_variant.inventory_quantity }}" /> 
+    <input type="hidden" name="product_type" value="{{ product.type }}" /> 
+    <input type="hidden" name="created_at" value="{{ product.created_at }}" /> 
+    <input type="hidden" name="product_image" value="{{ product.featured_image | img_url }}" /> 
+    <input type="hidden" name="body_html" value="{{ product.description }}" /> 
+    <input type="hidden" name="user_id" value="{{ customer.id }}" /> 
+    <input type="hidden" name="user_name" value="{{ customer.name }}" />
+    <input type="hidden" name="user_email" value="{{ customer.email }}" />
+    <input type="hidden" name="product_id" value="{{ product.id }}" />
+    <input type="hidden" name="shiping_address" value="{{ customer.default_address | format_address  }}" />
+    <div class="tooltip"> 
+    <button type="submit" class="shopify-payment-button save-letter">Wait now , Save Later</button>
+        <div  class="tooltiptext" ><span class="tooltip_text">Welcome to our waiting list , and there will be listed products,their prices and discounted prices and time to wait until get a discount</span></div>
+    </div>
+</form>
+
+{% else %}
+ <button type="submit" class="shopify-payment-button save-letter">Wait now , Save Later</button>
+{% endif %}
+
+
+
+{% unless customer  %}
+  <script>
+    $(document).ready(function(){
+      $('.save-letter').click(function(){
+        alert("Please login")
+      })
+    })
+  </script>
+{% endunless %}
+<script>
+    $(document).ready(function() {
+    $('#saveLetterForm').submit(function(event) {
+        event.preventDefault(); 
+        
+        var formData = $(this).serializeArray();
+        var jsonData = {};
+        $.each(formData, function(index, field) {
+            jsonData[field.name] = field.value;
+        });
+        // Replace with your API endpoint URL
+        // https://walked-clinton-word-basketball.trycloudflare.com
+        var apiUrl = 'https://duck-surely-carries-australian.trycloudflare.com/api/wait-save-add';
+        $.ajax({
+            url: apiUrl,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(jsonData),
+            success: function(response) {
+                console.log('API response:', response.message);
+               alert(response.message)
+              
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                
+            }
+        });
+    });
+});
+</script>

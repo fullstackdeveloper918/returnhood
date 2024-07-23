@@ -1,0 +1,354 @@
+.table_form table {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #E8E8E8;
+  border-spacing: 0;
+  border-collapse: separate;
+  overflow: hidden;
+  background: white;
+  width: 100%;
+}
+.table_form td,
+.table_form th {
+  border-bottom: 1px solid #E8E8E8;
+  text-align: left;
+  padding: 15px 8px;
+}
+.active_div {
+  background: #B4FED2;
+  padding: 5px 15px;
+  font-size: 13px;
+  border-radius: 30px;
+}
+.popup {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #00000047;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 15px;
+  z-index: 1;
+}
+.popup-inner {
+  background: #fff;
+  width: 100%;
+  max-width: 960px;
+  border-radius: 10px;
+  min-height: 220px;
+  padding: 20px;
+  position: relative;
+}
+.popup-inner h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.popup-inner select,
+.popup-inner input {
+  min-height: 40px;
+  background: #F8F8F8;
+  border-radius: 7px;
+  border-color: #ddd;
+  padding: 5px;
+  margin-top: 6px;
+}
+.content_data table tbody > tr:first-child {
+  background: transparent !important;
+}
+.popup-inner input {
+  border: 1px solid #ddd;
+}
+button.SaveNow {
+  background: #16740C;
+  font-size: 16px;
+  padding: 9px 15px;
+  border-radius: 7px;
+  box-shadow: none;
+  margin-top: 20px;
+  color: #fff;
+  border: 0px !important;
+  outline: 0px;
+  min-height: 40px;
+}
+button.SaveNow:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+button.close_btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border-radius: 20px;
+  border: 0px;
+  width: 23px;
+  height: 23px;
+  font-size: 11px;
+  padding: 0px;
+}
+.table_form button.close_btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0px;
+  background: transparent;
+  border: 0px;
+  border-radius: 0px;
+  max-width: 13px;
+}
+.create_now {
+  background: #E2E2E2;
+  font-size: 16px;
+  padding: 9px 15px;
+  border-radius: 7px;
+  box-shadow: none;
+  margin-top: 20px;
+  color: #111;
+  border: 0px !important;
+  outline: 0px;
+  min-height: 40px;
+  text-decoration: none;
+}
+.create_now:hover {
+  color: #111;
+}
+.content_data > div {
+  min-height: 40px;
+  background: #F8F8F8;
+  border-radius: 7px;
+  border-color: #ddd;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+}
+.content_data table {
+  font-family: arial, sans-serif;
+  width: 100%;
+  border-radius: 6px;
+  border-color: white !important;
+}
+.table_form th:first-child input {
+  margin-left: 7px;
+}
+.content_data td,
+.content_data th {
+  border: 1px solid #E8E8E8;
+  text-align: left;
+  padding: 8px;
+}
+.content_data tr:nth-child(odd) {
+  background-color: #dddddd6e;
+}
+.tableDiscount {
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  margin: 34px 0 10px;
+}
+label.font-bold {
+  font-weight: 600;
+  font-size: 16px;
+}
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+.pagination button {
+  background: #202020;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 5px 17px;
+  border-color: #ddd;
+  box-shadow: none;
+  color: #fff;
+  transition: 0.5s all;
+  border: 1px solid #202020;
+  cursor: pointer;
+}
+.pagination button.Prev_btn,
+.pagination button:hover {
+  background: transparent;
+  color: #202020;
+}
+.pagination button.Prev_btn:hover {
+  background: #202020;
+  color: #fff;
+}
+.table_form img.place_holder {
+  padding: 11px;
+  opacity: 0.5;
+}
+.Check_box {
+  position: relative;
+}
+.Check_box input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.Check_box label {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+.Check_box input[type="checkbox"]:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  background-color: #303030;
+  border-radius: 3px;
+}
+.top_haderFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0px;
+}
+.select_itms button img {
+  width: 14px;
+  position: relative;
+}
+.select_itms button {
+  background: #FFFFFF;
+  font-size: 14px;
+  border-radius: 5px;
+  border-color: #ddd;
+  box-shadow: none;
+  color: #111;
+  transition: 0.5s all;
+  border: 1px solid #DBDBDB;
+  cursor: pointer;
+  padding: 4px 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.select_itms {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+.filter_wrapper {
+  position: absolute;
+  background: #FFFFFF;
+  font-size: 14px;
+  border-radius: 5px;
+  border-color: #ddd;
+  box-shadow: none;
+  color: #111;
+  transition: 0.5s all;
+  border: 1px solid #DBDBDB;
+  cursor: pointer;
+  padding: 15px 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 190px;
+  top: 40px;
+  right: 0px;
+  z-index: 999;
+  box-shadow: 0px 0px 44px 0px #00000017;
+}
+.filter_wrapper ul {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.filter_wrapper ul li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.filter_wrapper p.Check_box {
+  display: inline-block;
+  padding-right: 10px;
+}
+.filter_wrapper .Check_box input {
+  width: 17px;
+  height: 17px;
+}
+.Check_box input[type="checkbox"]:checked + label::before {
+  content: "" !important;
+  position: absolute;
+  top: 8px;
+  left: 3px;
+  transform: translate(-4%, -50%);
+  width: 12px;
+  height: 11px;
+  background: url('../assets/arroe.svg');
+  color: #fff;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 3px;
+}
+.available_data {
+  background: #fff;
+  max-width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  margin: 40px auto 0px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 0px 2rem;
+}
+/* product_page */
+.common_container .table_form table {
+  border-radius: 12 px;
+}
+section.common_container {
+  max-width: 100%;
+  padding: 0px 1.5rem;
+}
+.heading_div {
+  font-size: 22px;
+  font-weight: 600;
+}
+.table_form img {
+  object-fit: contain;
+  background: #f8f8f887;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  padding: 4px;
+  width: 100%;
+  max-width: 40px;
+  margin: 0 auto;
+}
+.table_form th {
+  font-weight: 500;
+}
+.table_form tbody tr {
+  background: #ff000000;
+  transition: 0.5s all;
+  cursor: pointer;
+}
+.table_form tbody tr:hover {
+  background: #f1f1f170;
+}

@@ -1,0 +1,66 @@
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<div id="loader" style="display: none;">
+    Loading ....
+</div>
+    <div id="cardContainer" class="row">
+        <!-- Cards will be dynamically added here -->
+        </div>
+        <script>
+$(document).ready(function(){
+    $('#loader').show();
+
+    $.ajax({
+        url: "https://duck-surely-carries-australian.trycloudflare.com/api/partiuclar-user-wait-save",
+        type: 'POST',
+        data: { user_id: parseInt('{{customer.id}}') },
+        success: function(response) {
+            $('#loader').hide();
+            $('#cardContainer').empty();
+            
+            $.each(response.data, function(index, item) {
+                let endDate = new Date(item.discountData[0]?.end_date); // Convert end_date to Date object
+                let today = new Date(); // Today's date       
+                let timeDiff = endDate.getTime() - today.getTime();
+                let diffDays = Math.floor(timeDiff / (1000 * 3600 * 24)); // Convert difference to days and round down
+                let discountType = "";
+                
+                if(item.discountData[0]?.value_type == "percentage"){
+                    discountType = "%";
+                }
+
+                // Check if discountData and diffDays are available
+                let discountHtml = "";
+                if (item.discountData[0]?.value.split('.')[0] && diffDays >= 0) {
+                    discountHtml = `
+                        <div class="about-descount">
+                            <div class="discount">${item.discountData[0]?.value.split('.')[0]}${discountType} off</div>
+                            <div class="discountLeft">Available in ${diffDays} days</div>
+                        </div>
+                    `;
+                }
+
+                var cardHtml = `
+                    <div class="card" style="width: 18rem;">
+                        ${discountHtml}
+                        <img src="${item?.product_image}" class="card-img-top" alt="${item?.product_name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${item?.product_name}</h5>
+                            <p class="product-price">${item?.product_price}</p>
+                            <p class="card-text">${item?.body_html}</p>
+                            <a href="${item?.product_url}" class="btn btn-primary">View Product</a>
+                        </div>
+                    </div>
+                `;
+                
+                // Append cardHtml to cardContainer
+                $('#cardContainer').append(cardHtml);
+            });
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error fetching data:', textStatus, errorThrown);
+        }
+    });
+
+});
+
+</script>
